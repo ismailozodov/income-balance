@@ -1,0 +1,80 @@
+body {
+    font-family: serif;
+    background-color: cornflowerblue;
+}
+
+h2 {
+    color: rgb(223, 223, 223);
+}
+.link {
+    text-decoration: none;
+    background-color: orange;
+    color: white;
+    padding: 12px 30px;
+    font-weight: bold;
+    border: 3px solid orange;
+}
+.link:hover {
+    background-color: white;
+    color: orange;
+    transition: 0.3s;
+}
+
+.dive1 {
+    margin-top: 30px;
+}
+
+.dive2 {
+    margin-top: 100px;
+    justify-content: center;
+}
+form {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+.inputa {
+    display: inline-block;
+    width: 45%;
+    border: none;
+    background-color: rgb(206, 202, 202);
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+.tugma {
+    padding: 12px 20px;
+    border: 2px solid orange;
+    border-radius: 50%;
+    font-weight: bold;
+    background-color: orange;
+    color: white;
+}
+
+.tugma:hover {
+    background-color: white;
+    color: orange;
+    transition: 0.3s;
+}
+
+table {
+    border-collapse: collapse;
+    width: 1200px;
+    height: 40px;
+    justify-content: center;
+    background-color: rgb(202, 202, 202);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.td, th,tr ,td{
+    border: 1px solid black;
+}
+
+.tabele {
+    margin-top: 50px;
+}

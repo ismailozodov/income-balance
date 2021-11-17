@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Page 1</title>
+</head>
+<body>
+    <h2>Expanse</h2>
+    <div class="dive1">
+        <a class="link" href="./expanse.html">expanse</a>
+        <a class="link" href="./income.html">income</a>
+        <a class="link" href="./balance.html">balance</a>
+    </div>
+    <div class="dive2">
+        <form id="form">
+            <input class="inputa" id="input1" type="text" placeholder="maqsad..">
+            <input class="inputa" id="input2" type="number" placeholder="summa..">
+            <button class="tugma" type="submit">Send</button>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>N</th>
+                <th>Maqsad</th>
+                <th>Summa</th>
+                <th>Vaqt</th>
+                <th>O'chirish</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script>
+         async function renderExpanse() {
+            let res = await fetch('http://127.0.0.1:5000/expanse')
+            let data = await res.json()
+            tbody.innerHTML = null
+            let count = 1
+            for (let el of data){
+                let tr = document.createElement('tr')
+                let tNumber = document.createElement('td')
+                let tMaqsad = document.createElement('td')
+                let tSumma = document.createElement('td')
+                let tVaqt = document.createElement('td')
+                let tOchirish = document.createElement('td')
+                let button = document.createElement('button')
+
+                tNumber.textContent = count++
+                tMaqsad.textContent = el.purpose
+                tSumma.textContent = el.cost
+                tVaqt.textContent = el.date
+
+                button.textContent = 'x'
+                tOchirish.append(button)
+
+                tr.append(tNumber)
+                tr.append(tMaqsad)
+                tr.append(tSumma)
+                tr.append(tVaqt)
+                tr.append(tOchirish)
+
+                tbody.append(tr)
+
+                button.onclick = () => {
+                    fetch('http://127.0.0.1:5000/expanse',{
+                    method: 'DELETE',
+                    headers: {
+                       'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: el.id
+                    })
+                    
+                })
+                }  
+            }
+        }    
+       renderExpanse()
+
+       form.onsubmit = (event) => {
+           event.preventDefault()
+           fetch('http://127.0.0.1:5000/expanse',{
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                   purpose: input1.value,
+                   cost: input2.value
+               })
+           })
+
+       }
+    </script>
+ 
+    
+</body>
+</html>

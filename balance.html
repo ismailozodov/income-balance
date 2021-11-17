@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./home.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Balance</h2>
+    <div class="dive1">
+        <a class="link" href="./expanse.html">expanse</a>
+        <a class="link" href="./income.html">income</a>
+        <a class="link" href="./balance.html">balance</a>
+    </div>
+    <table class="tabele">
+    <thead>
+        <tr>
+            <th>harajat</th>
+            <th>daromant</th>
+            <th>jami</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        <tr>
+            <td id="har"></td>
+            <td id="dar"></td>
+            <td id="jam"></td>
+        </tr>
+    </tbody>
+</table>
+    <script>
+        async function renderExpanse() {
+           let res = await fetch('http://127.0.0.1:5000/balance')
+           let data = await res.json()
+           har.textContent = data.totalIncome
+           dar.textContent = data.totalExpanse
+           jam.textContent = data.totalMoney
+        }
+        renderExpanse()
+    </script>        
+</body>
+</html>
